@@ -1,5 +1,7 @@
 package dto;
 
+import dto.rental.Rental;
+
 import java.util.ArrayList;
 import java.util.List;
 
