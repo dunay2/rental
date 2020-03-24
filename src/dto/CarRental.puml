@@ -1,0 +1,66 @@
+@startuml
+
+class Customer
+{
+-String dni
+-String name
+--
++getTotalCharges():Float
+}
+abstract class Rental
+{
+-startDate: date
+-endDate: date
+--
+~getFeeforDelivery():Float
+}
+class WebRental
+{
+.deliveryTime:Integer [0..1]
+--
++getFeeforDelivery():Float
+}
+class RentalOnsite
+{
+-comments: String
+}
+
+class Car
+{
+-licensePlate: String
+}
+class Model
+{
+-name: String
+-pricePerDay: Float
+}
+
+class RentalOffice
+{
+-address: String
+-feeForDelivery: Float
+--
++getFeeforDelivery():Float
+}
+
+
+Car "1" -- "*"  Rental : isFor >
+Customer "1" -- "*"  Rental : makes >
+Car "1" -- "*"  Model : BelongsTo >
+Car "*" -- "1" RentalOffice: isAssignedTo
+Rental "*" -- "1" RentalOffice: has
+Rental <|-- "{disjoint,complete }" RentalOnsite
+Rental <|-- WebRental
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

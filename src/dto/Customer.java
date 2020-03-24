@@ -1,27 +1,32 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.System.in;
-
-public class Customer
-{
+public class Customer {
     private String dni;
     private String name;
-    private List<Rental> rentals;
-    public Integer getTotalCharges()
-    {
-        Integer total = 0;
+    private List<Rental> rentals = new ArrayList<>();
 
-        for  (Rental r:rentals)
-        {
-            if( r instanceof WebRental) {
-                RentalOffice pickUpOffice = r.getpickUpOffice();
-                RentalOffice deliveryOffice =  r.getDeliveryOffice();
-                if (deliveryOffice != pickUpOffice)
-                    total += deliveryOffice.getFeeForDelivery();
-            }
+    public Customer(String dni) {
+        this.dni = dni;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void addRental(Rental r) {
+        rentals.add(r);
+    }
+
+    public Float getTotalCharges() {
+        Float total = 0F;
+
+        for (Rental r : rentals) {
+            total += r.getFeeForDelivery();
         }
+
         return total;
     }
 }

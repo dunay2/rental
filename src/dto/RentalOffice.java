@@ -5,7 +5,17 @@ public class RentalOffice {
     private String address;
     private int feeForDelivery;
 
-    public Integer getFeeForDelivery() {
-        return  0;
+    public RentalOffice (String address){
+        this.address=address;
+    }
+
+    public Float getFeeForDelivery() {
+        return  25F;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }
+
+
